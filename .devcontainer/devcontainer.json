@@ -14,7 +14,7 @@
 	"forwardPorts": ["8000:8000"],
 
 	"postCreateCommand": "bash -i -c 'sudo apt update && sudo apt upgrade -y && sudo apt install -y php-cli php-curl php-fpm php-gd php-gmp php-mbstring php-mysql php-snmp php-xml php-zip'",
-	"postStartCommand": "bash -i -c 'cd /opt/librenms && source /opt/python/bin/activate && ./scripts/composer_wrapper.php install --no-dev'"
+	"postStartCommand": "bash -i -c 'cd /opt/librenms && source /opt/python/bin/activate && ./scripts/composer_wrapper.php install --no-dev && sed -i 's/#DB_HOST=/DB_HOST=db' .env && sed -i 's/#DB_DATABASE=/DB_DATABASE=librenms/g' .env && sed -i 's/#DB_USERNAME=/DB_USERNAME=librenms/g' .env && sed -i 's/#DB_PASSWORD=/DB_PASSWORD=mysecretpassword/g' .env'"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
