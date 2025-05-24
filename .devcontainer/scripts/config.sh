@@ -10,6 +10,9 @@ cd /opt/librenms \
 && ./lnms migrate --seed --no-interaction --force \
 && composer config --global repositories.kafkastore-plugin '{"type": "path", "url": "/workspaces/librenms-plugin-kafka-devcontainer/librenms-kafkastore-plugin", "symlink": true}' \
 && ./lnms plugin:add oldemarjesus/librenms-kafkastore-plugin @dev \
-&& ./scripts/composer_wrapper.php install --no-dev
+&& ./lnms vendor:publish --provider="KafkaStore\LibrenmsKafkaStorePlugin\KafkaStorePluginProvider" \
+&& ./scripts/composer_wrapper.php install --no-dev \
+&& cd /workspaces/librenms-plugin-kafka-devcontainer/librenms-kafkastore-plugin \
+&& composer install
 
 exit 0
