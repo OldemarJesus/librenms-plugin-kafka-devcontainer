@@ -8,7 +8,8 @@ cd /opt/librenms \
 && sed -i 's/#DB_USERNAME=/DB_USERNAME=librenms/g' .env \
 && sed -i 's/#DB_PASSWORD=/DB_PASSWORD=mysecretpassword/g' .env \
 && ./lnms migrate --seed --no-interaction --force \
-&& composer config --global repositories.kafkastore-plugin '{"type": "path", "url": "/workspaces/librenms-plugin-project/librenms-kafkastore-plugin", "symlink": true}' \
+&& composer config --global repositories.kafkastore-plugin '{"type": "path", "url": "/workspaces/librenms-plugin-kafka-devcontainer/librenms-kafkastore-plugin", "symlink": true}' \
 && ./lnms plugin:add oldemarjesus/librenms-kafkastore-plugin @dev \
+&& ./scripts/composer_wrapper.php install --no-dev
 
 exit 0

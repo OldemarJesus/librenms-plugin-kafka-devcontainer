@@ -14,3 +14,8 @@ cd .devcontainer
 cp .env.example .env
 sed -i 's/MYSQL_ROOT_PASSWORD=/MYSQL_ROOT_PASSWORD=somesecretstrongpassword/g' .env
 ```
+
+## Key Considerations
+
+-  Its assume that the folder name for this repo in your machine is librenms-plugin-kafka-devcontainer
+  - otherwise, update the <code>.devcontainer/scripts/config.sh</code> the plugin url path to the correct folder.
