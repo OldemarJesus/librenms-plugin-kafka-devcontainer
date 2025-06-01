@@ -13,6 +13,8 @@ cd /opt/librenms \
 && ./lnms vendor:publish --provider="KafkaStore\LibrenmsKafkaStorePlugin\KafkaStorePluginProvider" \
 && ./scripts/composer_wrapper.php install --no-dev \
 && cd /workspaces/librenms-plugin-kafka-devcontainer/librenms-kafkastore-plugin \
-&& composer install
+&& composer install \
+&& echo "zend.max_allowed_stack_size=-1" >> /etc/php/8.2/cli/conf.d/20-kafka.ini \
+&& echo "ffi.enable=true" >> /etc/php/8.2/cli/conf.d/20-kafka.ini
 
 exit 0
